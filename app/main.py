@@ -1,6 +1,7 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from app.database.connection import create_db_pool
+from app.routes.clients_route import clients_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -24,3 +25,5 @@ async def get_health(request: Request):
         "status": "ok",
         "database": "ok" if result == 1 else "error"
     }
+
+app.include_router(clients_router)
