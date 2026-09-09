@@ -2,3 +2,5 @@ fastapi
 uvicorn[standard]
 asyncpg
 pydantic-settings
+email-validator 
+pwdlib[argon2]
