@@ -7,3 +7,7 @@ class UserRepository():
     async def save_user(self, user_data: CreateUser):
         user = await self.db.fetchrow("INSERT INTO users(name, email, password_hash) VALUES($1, $2, $3) RETURNING id, name, email, ingest_key, created_at", user_data.name, user_data.email, user_data.password)
         return user
+
+    async def get_user_by_email(self, user_email: str):
+        user = await self.db.fetchrow("SELECT * FROM users WHERE email = $1", user_email)
+        return user
