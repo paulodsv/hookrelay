@@ -3,6 +3,7 @@ from fastapi import FastAPI, Request
 from app.database.connection import create_db_pool
 from app.routes.users_route import users_router
 from app.routes.auth_router import auth_router
+from app.routes.destinations import destination_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -29,3 +30,4 @@ async def get_health(request: Request):
 
 app.include_router(users_router)
 app.include_router(auth_router)
+app.include_router(destination_router)
