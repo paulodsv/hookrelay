@@ -11,3 +11,7 @@ class UserRepository():
     async def get_user_by_email(self, user_email: str):
         user = await self.db.fetchrow("SELECT * FROM users WHERE email = $1", user_email)
         return user
+
+    async def get_user_by_id(self, user_id: int):
+        user = await self.db.fetchrow("SELECT id, name, email, ingest_key, created_at FROM users WHERE id = $1", user_id)
+        return user
