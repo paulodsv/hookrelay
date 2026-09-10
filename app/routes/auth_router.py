@@ -5,6 +5,6 @@ from app.service.users import UserService
 
 auth_router = APIRouter(prefix="/auth", tags=["Auth"])
 
-@auth_router.post("/")
+@auth_router.post("/login")
 async def login(user_login_data: UserLogin, service: UserService = Depends(get_user_service)):
     return await service.user_login_service(user_login_data)
