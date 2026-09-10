@@ -4,8 +4,7 @@ from app.core.security import hash_password, verify_password, create_access_toke
 from app.schemas.users import CreateUser, UserLogin, TokenResponse
 
 class UserService():
-    def __init__(self, db, user_repo: UserRepository):
-        self.db = db
+    def __init__(self, user_repo: UserRepository):
         self.user_repo = user_repo
 
     async def create_user_service(self, user_data: CreateUser):
